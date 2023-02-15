@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python FastAPI To Do with Jinja2 Template</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<section class="vh-100" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-9 col-xl-7">
+        <div class="card rounded-3">
+          <div class="card-body p-4">
+ 
+            <h4 class="text-center my-3 pb-3">Python FastAPI To Do with Jinja2 Template</h4>
+            <form class="row" action="/add" method="post">
+              <div class="col-4">
+                <div class="form-outline">
+                  <input type="text" id="title" name="title" class="form-control" placeholder="Enter a task here"/>
+                </div>
+              </div>
+ 
+              <div class="col-6">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+ 
+            <table class="table mb-4">
+                <thead>
+                    <tr>
+                      <th scope="col">No.</th>
+                      <th scope="col">Todo item</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for todo in todo_list %}
+                    <tr>
+                      <th scope="row">{{todo.id }}</th>
+                      <td>{{ todo.title }}</td>
+                      <td>
+                        {% if todo.complete == False %}
+                        <div class="alert alert-secondary" role="alert">In progress</div>
+                        {% else %}
+                        <div class="alert alert-success" role="alert">Completed</div>
+                        {% endif %}
+                      </td>
+                      <td>
+                        <a class="btn btn-success" href="/update/{{ todo.id }}">Update</a>
+                        <a class="btn btn-danger ms-1" href="/delete/{{ todo.id }}">Delete</a>
+                      </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html> 

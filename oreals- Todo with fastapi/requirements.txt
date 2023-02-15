@@ -1,0 +1,6 @@
+uvicorn = "*"
+fastapi = "*"
+python-multipart = "*"
+sqlalchemy = "*"
+jinja2 = "*"
+psycopg2 = "*"
